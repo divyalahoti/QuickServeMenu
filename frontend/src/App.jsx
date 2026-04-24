@@ -9,12 +9,17 @@ import OrderSuccess from "./pages/OrderSuccess/OrderSuccess";
 import TableLayout from "./pages/Tables/TableLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard/AdminDashboard";
 import Login from './pages/Admin/Login/Login';
+import ScrollToTop from './pages/ScrollToTop';
+import FloatingNav from "./pages/FloatingNav/FloatingNav";
 
 
 
 function App() {
+
   return (
     <BrowserRouter>
+      <ScrollToTop />
+      <FloatingNav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ordertype" element={<OrderType />} />
@@ -26,7 +31,7 @@ function App() {
         <Route path="/tablelayout" element={<TableLayout />} />
 
         <Route path="/admin" element={<AdminDashboard />} />
-         <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

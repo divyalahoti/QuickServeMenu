@@ -12,6 +12,7 @@
     color: var(--text-main);
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
+    padding-top: 70px;
 }
 
 .customize-container {
@@ -175,25 +176,29 @@
 
 /* Fixed Checkout Bar */
 .checkout-bar {
-  position: fixed;
-  bottom: 0; /* Changed from 30px to 0 for better stability */
-  left: 0;
-  width: 100%;
-  background: rgba(26, 29, 32, 0.95); /* Slightly more solid */
-  backdrop-filter: blur(20px);
-  padding: 20px 5%;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
-  z-index: 9999; /* Force it to the very top */
-  display: block !important; /* Ensure it's not hidden */
+    position: fixed;
+    bottom: 0;
+    /* Changed from 30px to 0 for better stability */
+    left: 0;
+    width: 100%;
+    background: rgba(26, 29, 32, 0.95);
+    /* Slightly more solid */
+    backdrop-filter: blur(20px);
+    padding: 20px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    /* Force it to the very top */
+    display: block !important;
+    /* Ensure it's not hidden */
 }
 
 .bar-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .total-label {
@@ -255,12 +260,11 @@
 /* Update these specific classes in Customize.css */
 
 .customize-page {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  min-height: 100vh;
-  position: relative; /* Add this */
-  overflow-x: hidden; /* Prevent horizontal scroll from AOS */
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    position: relative;
+    /* Add this */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll from AOS */
 }
-
-
-

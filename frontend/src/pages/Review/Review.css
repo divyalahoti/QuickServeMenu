@@ -16,6 +16,7 @@
   padding: 40px 20px;
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
+  padding-top: 70px;
 }
 
 .review-container {
@@ -166,7 +167,7 @@
   .order-card {
     padding: 25px;
   }
-  
+
   .review-header h1 {
     font-size: 1.8rem;
   }

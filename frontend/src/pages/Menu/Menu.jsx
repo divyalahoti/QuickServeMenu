@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Menu.css";
+import CartPreview from "../CartPreview/CartPreview";
 
 const Menu = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
+       <CartPreview/>
       <header className="menu-header" data-aos="fade-down">
         <span className="subtitle">Experience Excellence</span>
         <h1>Our Culinary Selection</h1>

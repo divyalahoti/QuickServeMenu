@@ -1,10 +1,11 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Customize.css";
-import CartContext from "../../context/CartContext"; 
+import CartContext from "../../context/CartContext";
 import { useContext } from "react";
+import CartPreview from "../CartPreview/CartPreview";
 
 
 
@@ -13,18 +14,18 @@ const Customize = () => {
   const navigate = useNavigate();
 
 
- 
-const { addToCart } = useContext(CartContext);
 
-const handleAdd = () => {
-  addToCart({
-    ...state,
-    qty,
-    extras,
-    total
-  });
-  navigate("/review");
-};
+  const { addToCart } = useContext(CartContext);
+
+  const handleAdd = () => {
+    addToCart({
+      ...state,
+      qty,
+      extras,
+      total
+    });
+    navigate("/review");
+  };
 
   const [qty, setQty] = useState(1);
   const [extras, setExtras] = useState({
@@ -51,6 +52,7 @@ const handleAdd = () => {
 
   return (
     <div className="customize-page">
+      <CartPreview/>
       <div className="customize-container">
         {/* Left: Premium Image Section */}
         <div className="image-hero" data-aos="zoom-out">
@@ -108,7 +110,7 @@ const handleAdd = () => {
           <button
             className="confirm-btn"
             // onClick={() => navigate("/review", { state: { ...state, qty, extras, total } })} 
-            onClick={()=>handleAdd()}
+            onClick={() => handleAdd()}
           >
             Add to Order
           </button>

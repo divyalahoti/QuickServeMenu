@@ -87,11 +87,8 @@ const TableLayout = () => {
                 <input type="tel" required value={phone} onChange={(e) => setPhone(e.target.value)} />
                 <label>Phone Number</label>
               </div>
-              <div className="divider"></div>
-              <h3>Schedule</h3>
-              <div className="input-box">
-                <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
-              </div>
+            
+              
             </div>
 
             {/* <div className="legend-box" data-aos="fade-up">
