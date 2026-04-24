@@ -1,0 +1,136 @@
+:root {
+  --primary: #c5a059;
+  --bg-dark: #0f1113;
+  --card-bg: #1a1d20;
+  --text-main: #ffffff;
+  --text-muted: #a0a0a0;
+}
+
+.order-type-page {
+  background-color: var(--bg-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  padding: 20px;
+}
+
+.order-type-container {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+/* Header Section */
+.order-header {
+  margin-bottom: 60px;
+}
+
+.brand-subtitle {
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.order-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.order-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.gold-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--primary);
+  margin: 30px auto;
+}
+
+/* Choice Grid */
+.type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.type-card {
+  background: var(--card-bg);
+  padding: 50px 30px;
+  border-radius: 24px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.type-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.icon-wrapper {
+  background: rgba(197, 160, 89, 0.1);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  transition: 0.3s;
+}
+
+.type-card:hover .icon-wrapper {
+  background: var(--primary);
+}
+
+.type-icon {
+  font-size: 3rem;
+}
+
+.type-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.type-content p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+.select-link {
+  color: var(--primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.order-footer {
+  margin-top: 60px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .order-header h1 { font-size: 2.2rem; }
+  .type-grid { grid-template-columns: 1fr; }
+  .type-card { padding: 40px 20px; }
+}

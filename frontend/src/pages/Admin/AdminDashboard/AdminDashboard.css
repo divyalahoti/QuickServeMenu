@@ -1,0 +1,263 @@
+:root {
+    --primary-gold: #c5a059;
+    --bg-deep: #0a0c0e;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+.admin-portal {
+    display: flex;
+    min-height: 100vh;
+    background: var(--bg-deep);
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: 280px;
+    background: #0e1113;
+    border-right: 1px solid var(--glass-border);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-logo {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.admin-logo .gold-text {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: var(--primary-gold);
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-nav button {
+    background: transparent;
+    border: none;
+    color: #888;
+    text-align: left;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.admin-nav button.active {
+    background: var(--glass);
+    color: var(--primary-gold);
+    border: 1px solid var(--glass-border);
+}
+
+/* Main Area */
+.admin-main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.admin-header h1 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.status-indicator {
+    background: rgba(46, 213, 115, 0.1);
+    color: #2ed573;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #2ed573;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+/* Grid & Cards */
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 25px;
+    transition: 0.4s;
+}
+
+.glass-card:hover {
+    border-color: var(--primary-gold);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+}
+
+.order-id {
+    font-weight: 700;
+    color: #aaa;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.status-badge.preparing {
+    background: #ffa502;
+    color: black;
+}
+
+.status-badge.ready {
+    background: #2ed573;
+    color: black;
+}
+
+.status-badge.served {
+    background: #1e90ff;
+    color: white;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.info-row.total {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--glass-border);
+    font-size: 1.1rem;
+}
+
+.gold-text {
+    color: var(--primary-gold);
+}
+
+/* Actions */
+.card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.card-actions button {
+    border: 1px solid var(--glass-border);
+    background: transparent;
+    color: white;
+    padding: 10px 5px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card-actions button:hover {
+    background: white;
+    color: black;
+}
+
+/* Booking Card Specific */
+.booking-card {
+    text-align: center;
+}
+
+.table-circle {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--primary-gold);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: var(--primary-gold);
+    background: rgba(197, 160, 89, 0.1);
+}
+
+.btn-free {
+    margin-top: 20px;
+    width: 100%;
+    background: #eb4d4b;
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        width: 80px;
+        padding: 20px 10px;
+    }
+
+    .admin-logo .gold-text,
+    .admin-nav button span,
+    .admin-logo small {
+        display: none;
+    }
+
+    .admin-nav button {
+        text-align: center;
+    }
+}
