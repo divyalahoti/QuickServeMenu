@@ -7,14 +7,9 @@ import CartContext from "../../context/CartContext";
 import { useContext } from "react";
 import CartPreview from "../CartPreview/CartPreview";
 
-
-
 const Customize = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-
-
-
   const { addToCart } = useContext(CartContext);
 
   const handleAdd = () => {
@@ -52,7 +47,7 @@ const Customize = () => {
 
   return (
     <div className="customize-page">
-      <CartPreview/>
+      <CartPreview />
       <div className="customize-container">
         {/* Left: Premium Image Section */}
         <div className="image-hero" data-aos="zoom-out">
@@ -79,7 +74,7 @@ const Customize = () => {
                   onClick={() => setExtras({ ...extras, [item.key]: !extras[item.key] })}
                 >
                   <div className="option-info">
-                    <span className="option-label">{item.label}</span>
+                    <span className="option-label">{item.label}</span>&nbsp;&nbsp;
                     <span className="option-desc">{item.desc}</span>
                   </div>
                   <div className="option-price">+₹{item.price}</div>

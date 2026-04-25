@@ -4,10 +4,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Review.css";
 import CartContext from "../../context/CartContext";
+import CartPreview from "../CartPreview/CartPreview";
 
 const Review = () => {
   const navigate = useNavigate();
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, increaseQty, decreaseQty } = useContext(CartContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,7 +17,8 @@ const Review = () => {
 
   // ✅ FIX: check cart instead of state
   if (!cartItems || cartItems.length === 0) {
-    return <div className="error-screen">No items in cart</div>;
+    navigate("/menu")
+    return;
   }
 
   // ✅ total calculation
@@ -24,11 +26,13 @@ const Review = () => {
 
   return (
     <div className="review-page">
+      <div className="back-btn" onClick={() => navigate(-1)}>← Back</div>
+      <CartPreview />
       <div className="review-container" data-aos="zoom-in">
         <header className="review-header">
           <span className="subtitle">Final Step</span>
           <h1>Review Your Order</h1>
-          <div className="divider"></div>
+          {/* <div className="divider"></div> */}
         </header>
 
         {/* ✅ LOOP ALL CART ITEMS */}
@@ -38,17 +42,27 @@ const Review = () => {
             .map(([key]) => key.charAt(0).toUpperCase() + key.slice(1));
 
           return (
-            <div className="order-card" key={index}>
+            <div className="order-card" key={item.name + index}>
+
               <div className="order-main">
                 <div className="item-info">
                   <h3>{item.name}</h3>
-                  <p className="qty-tag">Quantity: {item.qty}</p>
+
+                  {/* 🔥 EDITABLE QTY */}
+                  <div className="qty-control">
+                    <button onClick={() => decreaseQty(index)}>-</button>
+                    <span>{item.qty}</span>
+                    <button onClick={() => increaseQty(index)}>+</button>
+                  </div>
+
                 </div>
+
                 <div className="item-price">₹{item.total}</div>
               </div>
 
               <div className="order-details">
                 <h4>Customizations</h4>
+
                 {selectedExtras.length > 0 ? (
                   <ul className="extras-list">
                     {selectedExtras.map((extra, i) => (
@@ -62,6 +76,7 @@ const Review = () => {
                   <p className="no-extras">No additional customizations</p>
                 )}
               </div>
+
             </div>
           );
         })}

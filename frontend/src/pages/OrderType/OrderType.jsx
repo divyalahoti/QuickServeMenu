@@ -41,7 +41,7 @@ const OrderType = () => {
           <span className="brand-subtitle">Grand Royale Cuisine</span>
           <h1>How would you like to dine?</h1>
           <p>Select your preferred service style to begin</p>
-          <div className="gold-divider"></div>
+          {/* <div className="gold-divider"></div> */}
         </header>
 
         <div className="type-grid">

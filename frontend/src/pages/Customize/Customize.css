@@ -21,7 +21,9 @@
     display: flex;
     min-height: 100vh;
 }
-
+.custom-section h3{
+    margin-top: 8px;
+}
 /* Image */
 .image-hero {
     flex: 1.2;
@@ -98,6 +100,7 @@
 .option-desc {
     font-size: 0.75rem;
     color: var(--text-muted);
+    
 }
 
 .option-price {
@@ -115,6 +118,7 @@
     background: var(--card-bg);
     border-radius: 10px;
     padding: 5px;
+    margin-top: 10px;
 }
 
 .qty-btn {
@@ -153,6 +157,7 @@
     font-size: 1.4rem;
     font-weight: bold;
     color: var(--primary);
+    margin-left: 10px;
 }
 
 .confirm-btn {

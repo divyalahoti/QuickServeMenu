@@ -37,7 +37,7 @@ const Menu = () => {
         <span className="subtitle">Experience Excellence</span>
         <h1>Our Culinary Selection</h1>
         {table && <div className="table-badge">Table {table}</div>}
-        <div className="divider"></div>
+        {/* <div className="divider"></div> */}
       </header>
 
       <div className="menu-grid">

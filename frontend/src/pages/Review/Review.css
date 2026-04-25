@@ -171,3 +171,34 @@
     font-size: 1.8rem;
   }
 }
+
+/* Quantity Control */
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.qty-control button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: var(--card-bg);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.qty-control button:hover {
+  background: var(--primary);
+  color: black;
+}
+
+.qty-control span {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 600;
+}

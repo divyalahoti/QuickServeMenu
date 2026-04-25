@@ -12,7 +12,8 @@ export const createOrder = async (req, res) => {
 
 // GET ALL ORDERS (ADMIN)
 export const getOrders = async (req, res) => {
-  const orders = await Order.find().sort({ createdAt: -1 });
+  const orders = await Order.find()
+  // .sort({ createdAt: -1 });
   res.json({ success: true, orders });
 };
 

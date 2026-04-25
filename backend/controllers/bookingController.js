@@ -55,3 +55,14 @@ export const deleteBooking = async (req, res) => {
   await Booking.findByIdAndDelete(req.params.id);
   res.json({ success: true });
 };
+
+// Update status to Arrived
+export const updateBookingStatus = async (req, res) => {
+    const updated = await Booking.findByIdAndUpdate(
+        req.params.id, 
+        { status: req.body.status }, 
+        { new: true }
+    );
+    res.json({ success: true, updated });
+};
+

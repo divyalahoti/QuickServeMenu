@@ -105,23 +105,58 @@
 }
 
 /* ================= USER ICON ================= */
+/* Container */
 .user-profile-trigger {
   position: absolute;
   top: 15px;
   right: 15px;
-  z-index: 10;
+  z-index: 20;
 }
 
+/* Icon Wrapper - Glass + Glow */
 .user-icon-wrapper {
-  width: 45px;
-  height: 45px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  display: flex;
+display: flex;
   align-items: center;
   justify-content: center;
+/* Glass Effect */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--primary);
   font-size: 1.2rem;
+  cursor: pointer;
+  /* Smooth animation */
+  transition: all 0.35s ease;
+  /* Soft glow */
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+/* ✨ Hover Animation */
+.user-icon-wrapper:hover {
+  transform: translateY(-3px) scale(1.08);
+  background: rgba(197, 160, 89, 0.15);
+  box-shadow:
+    0 10px 30px rgba(197, 160, 89, 0.3),
+    0 0 15px rgba(197, 160, 89, 0.4);
+  color: #fff;
+}
+
+/* 💫 Icon animation */
+.user-icon-wrapper svg {
+  transition: transform 0.3s ease;
+}
+
+
+
+/* 🔥 Click effect */
+.user-icon-wrapper:active {
+  transform: scale(0.95);
 }
 
 /* ================= FOOTER ================= */
