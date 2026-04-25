@@ -3,131 +3,192 @@
     --bg-deep: #0a0c0e;
     --glass: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
+    --text-muted: #666;
 }
 
 .login-portal {
-    height: 100vh;
+    min-height: 100dvh;
+    /* Dynamic viewport height for mobile */
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--bg-deep);
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: 'Inter', sans-serif;
+    padding: 20px;
 }
 
-/* Subtle background glow to match dashboard pulse */
+/* Background Glow */
 .login-bg-overlay {
     position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+    width: clamp(300px, 60vw, 600px);
+    height: clamp(300px, 60vw, 600px);
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.12) 0%, transparent 70%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
+    pointer-events: none;
+}
+
+/* Back Button */
+.back-home-btn {
+    position: absolute;
+    top: clamp(20px, 5vh, 40px);
+    left: clamp(20px, 5vw, 40px);
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+    font-size: 0.9rem;
+}
+
+.back-home-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-gold);
+}
+
+/* The Card Container */
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
 }
 
 .login-card {
-    position: relative;
-    z-index: 1;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
+    /* Limits width on laptops/desktops */
     background: var(--glass);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 40px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border-radius: 28px;
+    padding: clamp(30px, 8vw, 50px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
 }
 
 .login-header {
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: clamp(25px, 5vh, 40px);
 }
 
 .shield-icon {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     color: var(--primary-gold);
     margin-bottom: 15px;
-    filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.3));
 }
 
 .login-header h2 {
     color: white;
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
     font-weight: 300;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-}
-
-.login-header p {
-    color: #666;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-}
-
-/* Input Styling */
-.input-field {
-    margin-bottom: 20px;
-}
-
-.input-field label {
-    display: block;
-    color: var(--primary-gold);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
     margin-bottom: 8px;
 }
 
+/* Inputs */
 .input-wrapper {
     display: flex;
     align-items: center;
-    background: rgba(255,255,255,0.03);
+    background: rgba(0, 0, 0, 0.2);
     border: 1px solid var(--glass-border);
-    border-radius: 12px;
+    border-radius: 14px;
     padding: 0 15px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .input-wrapper:focus-within {
     border-color: var(--primary-gold);
-    background: rgba(255,255,255,0.07);
-}
-
-.input-wrapper .icon {
-    color: #555;
-    margin-right: 12px;
+    background: rgba(197, 160, 89, 0.05);
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.1);
 }
 
 .input-wrapper input {
     width: 100%;
-    height: 50px;
+    height: 54px;
     background: transparent;
     border: none;
     outline: none;
     color: white;
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
-/* Premium Button */
+/* Button */
 .premium-login-btn {
     width: 100%;
-    height: 55px;
-    margin-top: 10px;
+    height: 58px;
+    margin-top: 15px;
     background: var(--primary-gold);
     border: none;
-    border-radius: 12px;
+    border-radius: 14px;
     color: #000;
     font-weight: 800;
+    font-size: 1rem;
     letter-spacing: 2px;
     cursor: pointer;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .premium-login-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+    transform: translateY(-4px);
     background: #d4b375;
+    box-shadow: 0 12px 24px rgba(197, 160, 89, 0.4);
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 30px;
+    opacity: 0.4;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* For Small Mobile (iPhone SE etc) */
+@media (max-width: 375px) {
+    .login-card {
+        padding: 25px 20px;
+    }
+
+    .back-home-btn span {
+        display: none;
+        /* Icon only on tiny screens */
+    }
+}
+
+/* For Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .login-card {
+        max-width: 380px;
+    }
+}
+
+/* For Landscape Phones */
+@media (max-height: 500px) and (orientation: landscape) {
+    .login-portal {
+        padding: 40px 20px;
+        align-items: flex-start;
+    }
+
+    .login-card {
+        max-width: 500px;
+    }
+
+    .shield-icon {
+        display: none;
+    }
+
+    /* Save space */
 }

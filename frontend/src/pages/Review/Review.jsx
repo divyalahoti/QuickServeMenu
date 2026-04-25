@@ -4,7 +4,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Review.css";
 import CartContext from "../../context/CartContext";
-import CartPreview from "../CartPreview/CartPreview";
 
 const Review = () => {
   const navigate = useNavigate();
@@ -25,7 +24,6 @@ const Review = () => {
 
   return (
     <div className="review-page">
-      
       <div className="review-container" data-aos="zoom-in">
         <header className="review-header">
           <span className="subtitle">Final Step</span>
@@ -95,9 +93,7 @@ const Review = () => {
             Confirm & Pay
           </button>
         </div>
-        <CartPreview/>
       </div>
-      
     </div>
   );
 };

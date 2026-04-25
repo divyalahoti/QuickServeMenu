@@ -1,263 +1,136 @@
 :root {
-    --primary-gold: #c5a059;
-    --bg-deep: #0a0c0e;
-    --glass: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --bg-main: #050505;
+    --sidebar-bg: #0f1115;
+    --accent-gold: #c5a059;
+    --card-bg: #161920;
+    --border-light: rgba(255, 255, 255, 0.05);
+    --text-main: #ffffff;
+    --text-dim: #94a3b8;
 }
 
-.admin-portal {
+/* ... (root variables remain the same) */
+
+.admin-portal-modern {
     display: flex;
+    flex-direction: row;
+    /* Ensure horizontal layout on laptop */
+    background: var(--bg-main);
     min-height: 100vh;
-    background: var(--bg-deep);
-    font-family: 'Inter', sans-serif;
-    color: white;
+    color: var(--text-main);
 }
 
-/* Sidebar */
-.admin-sidebar {
+/* HIDE MOBILE TOP BAR ON LAPTOPS */
+.desktop-hidden {
+    display: none !important;
+}
+
+.modern-sidebar {
     width: 280px;
-    background: #0e1113;
-    border-right: 1px solid var(--glass-border);
-    padding: 40px 20px;
+    min-width: 280px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border-light);
     display: flex;
     flex-direction: column;
+    padding: 30px 20px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    transition: all 0.3s ease;
 }
 
-.admin-logo {
-    text-align: center;
-    margin-bottom: 60px;
+.close-sidebar {
+    display: none;
+    /* Hidden on Desktop */
 }
 
-.admin-logo .gold-text {
-    display: block;
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 5px;
-    color: var(--primary-gold);
-}
-
-.admin-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.admin-nav button {
-    background: transparent;
-    border: none;
-    color: #888;
-    text-align: left;
-    padding: 15px 20px;
-    border-radius: 12px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.admin-nav button.active {
-    background: var(--glass);
-    color: var(--primary-gold);
-    border: 1px solid var(--glass-border);
-}
-
-/* Main Area */
-.admin-main {
+/* MAIN CONTENT */
+.modern-main {
     flex: 1;
+    width: 100%;
     padding: 40px;
     overflow-y: auto;
 }
 
-.admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.admin-header h1 {
-    font-size: 2rem;
-    font-weight: 300;
-}
-
-.status-indicator {
-    background: rgba(46, 213, 115, 0.1);
-    color: #2ed573;
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.pulse-dot {
-    width: 8px;
-    height: 8px;
-    background: #2ed573;
-    border-radius: 50%;
-    animation: pulse 1.5s infinite;
-}
-
-/* Grid & Cards */
-.admin-grid {
+/* GRID FIX FOR LAPTOP */
+.modern-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    /* Allows 3-4 cards per row on laptop, 1 on mobile */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
 }
 
-.glass-card {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 25px;
-    transition: 0.4s;
+/* RESPONSIVE QUERIES */
+@media (max-width: 992px) {
+    .admin-portal-modern {
+        flex-direction: column;
+        /* Stack on mobile */
+    }
+
+    .desktop-hidden {
+        display: flex !important;
+        /* Show mobile bar */
+    }
+
+    .modern-sidebar {
+        position: fixed;
+        left: -100%;
+        z-index: 1000;
+        width: 80%;
+    }
+
+    .modern-sidebar.open {
+        left: 0;
+    }
+
+    .close-sidebar {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .modern-main {
+        padding: 20px;
+    }
+
+    .modern-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
 }
 
-.glass-card:hover {
-    border-color: var(--primary-gold);
-    background: rgba(255, 255, 255, 0.05);
+/* TILES & CARDS (Professional Look) */
+.order-tile {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 15px;
-}
-
-.order-id {
-    font-weight: 700;
-    color: #aaa;
-}
-
-.status-badge {
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    font-weight: 800;
-}
-
-.status-badge.preparing {
-    background: #ffa502;
-    color: black;
-}
-
-.status-badge.ready {
-    background: #2ed573;
-    color: black;
-}
-
-.status-badge.served {
-    background: #1e90ff;
-    color: white;
-}
-
-.info-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-}
-
-.info-row.total {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px dashed var(--glass-border);
-    font-size: 1.1rem;
-}
-
-.gold-text {
-    color: var(--primary-gold);
-}
-
-/* Actions */
-.card-actions {
+.tile-actions {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    margin-top: 25px;
 }
 
-.card-actions button {
-    border: 1px solid var(--glass-border);
-    background: transparent;
+.action-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
     color: white;
-    padding: 10px 5px;
+    padding: 8px;
     border-radius: 8px;
-    font-size: 0.75rem;
     cursor: pointer;
+    font-size: 0.8rem;
     transition: 0.2s;
 }
 
-.card-actions button:hover {
-    background: white;
+.action-btn:hover {
+    background: var(--accent-gold);
     color: black;
-}
-
-/* Booking Card Specific */
-.booking-card {
-    text-align: center;
-}
-
-.table-circle {
-    width: 60px;
-    height: 60px;
-    border: 2px solid var(--primary-gold);
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    color: var(--primary-gold);
-    background: rgba(197, 160, 89, 0.1);
-}
-
-.btn-free {
-    margin-top: 20px;
-    width: 100%;
-    background: #eb4d4b;
-    border: none;
-    color: white;
-    padding: 12px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scale(1.3);
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Mobile Responsive */
-@media (max-width: 992px) {
-    .admin-sidebar {
-        width: 80px;
-        padding: 20px 10px;
-    }
-
-    .admin-logo .gold-text,
-    .admin-nav button span,
-    .admin-logo small {
-        display: none;
-    }
-
-    .admin-nav button {
-        text-align: center;
-    }
 }
