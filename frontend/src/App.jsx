@@ -19,7 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <FloatingNav />
+      {/* <FloatingNav /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ordertype" element={<OrderType />} />
